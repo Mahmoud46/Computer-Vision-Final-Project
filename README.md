@@ -4,4 +4,4 @@
 <h2>Overview</h2>
 <p>This project applies everything we've learned in the Computer Vision course and is designed to be user-friendly. It allows users to interact with and try various tools, such as image processing, object detection, and many others, independently.</p>
 <h2>Note</h2>
-<p>For more information about the project <a href="https://mahmoud46.github.io/Pixel/">Click here!</a></p>
+<p>For additional details about the project, <a href="https://mahmoud46.github.io/Pixel/">please click here!</a></p>
