@@ -5,3 +5,5 @@
 <p>This project applies everything we've learned in the Computer Vision course and is designed to be user-friendly. It allows users to interact with and try various tools, such as image processing, object detection, and many others, independently.</p>
 <h2>Note</h2>
 <p>For additional details about the project, <a href="https://mahmoud46.github.io/Pixel/">please click here!</a></p>
+<h3>Run</h3>
+<code>python run.py</code>
