@@ -389,6 +389,3 @@ def face_detection():
             jsonify({'Message': "Transformation has been done successfully", "img": img}), 200)
         return res
 
-
-if __name__ == "__main__":
-    app.run()
