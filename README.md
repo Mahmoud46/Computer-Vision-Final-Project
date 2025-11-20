@@ -17,7 +17,8 @@ For additional details about the project, [please click here!](https://mahmoud46
 
 ```bash
 git clone https://github.com/Mahmoud46/Computer-Vision-Final-Project.git
-cd cv-project
+cd Computer-Vision-Final-Project
 python run.py
 ```
+
 
