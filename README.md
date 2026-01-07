@@ -1,6 +1,6 @@
 <p align="center"><img src="static\imgs\sub.svg" width=200></p>
 
-<h1 align="center">Computer Vision Final Project</h1>
+<h1 align="center">Pixel Computer Vision Final Project</h1>
 
 <p align="center"><img src="static\imgs\pixel_video.gif"></p>
 <p align="center"><img src="static\imgs\pixel_poster.png" width=700></p>
@@ -13,6 +13,13 @@ This project applies everything we've learned in the Computer Vision course and 
 
 For additional details about the project, [please click here!](https://mahmoud46.github.io/pixel/)
 
+## 👨‍🎓 Project Team
+
+- **[Mahmoud Zakaria](https://github.com/Mahmoud46)** – Junior Biomedical Engineering Student
+- **[Yasmin Yasser](https://www.linkedin.com/in/yasmin-yasser-92ba09235/)** – Junior Biomedical Engineering Student
+
+- **[Aisha Waziry](https://www.linkedin.com/in/aisha-waziry-330592212/)** – Junior Biomedical Engineering Student
+
 ### Run
 
 ```bash
@@ -21,4 +28,7 @@ cd Computer-Vision-Final-Project
 python run.py
 ```
 
+## 📄 License & Copyright
 
+© **May 2023 – Pixel Project Team**  
+All rights reserved.
