@@ -85,7 +85,7 @@ def draw_circles(A, img, sid):
     return img_path
 
 
-def adaptive_threshold(img, sub_thresh=0.10):
+def perform_adaptive_threshold(img, sub_thresh=0.10):
     image = img.copy()
     if image.shape[-1] == 3:
         gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
@@ -116,6 +116,47 @@ def adaptive_threshold(img, sub_thresh=0.10):
             sum = integralimage[y2, x2] - integralimage[y1, x2] - \
                 integralimage[y2, x1] + integralimage[y1, x1]
             if (int)(gray[j, i] * count) < (int)(sum * (1.0 - sub_thresh)):
+                image_thresh[j, i] = 0
+            else:
+                image_thresh[j, i] = 255
+
+    return image_thresh
+
+def adaptive_threshold(img, sub_thresh=0.10):
+    image = img.copy()
+
+    if image.ndim == 3:
+        gray = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
+    else:
+        gray = image
+
+    # ✅ Correct dtype for BOTH math & cv2.integral
+    gray = gray.astype(np.float32)
+
+    integralimage = cv2.integral(gray, cv2.CV_32F)
+
+    height, width = gray.shape
+    win_length = max(1, width // 10)
+
+    image_thresh = np.zeros((height, width), dtype=np.uint8)
+
+    for j in range(height):
+        for i in range(width):
+            x1 = max(i - win_length, 0)
+            x2 = min(i + win_length, width - 1)
+            y1 = max(j - win_length, 0)
+            y2 = min(j + win_length, height - 1)
+
+            count = (x2 - x1 + 1) * (y2 - y1 + 1)
+
+            region_sum = (
+                integralimage[y2 + 1, x2 + 1]
+                - integralimage[y1,     x2 + 1]
+                - integralimage[y2 + 1, x1]
+                + integralimage[y1,     x1]
+            )
+
+            if gray[j, i] * count < region_sum * (1.0 - sub_thresh):
                 image_thresh[j, i] = 0
             else:
                 image_thresh[j, i] = 255

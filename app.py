@@ -14,7 +14,8 @@ from controllers.image_thresholding_segmentation import image_thresholding_segme
 from controllers.face_detection import face_detection_bp
 from controllers.face_recognition import face_recognition_bp
 from controllers.ping import ping_bp
-from controllers.start_cleanup_thread import start_cleanup_thread_bp
+# from controllers.start_cleanup_thread import start_cleanup_thread_bp, start_cleanup_thread
+from controllers.start_cleanup_thread import  start_cleanup_thread
 
 
 app = Flask(__name__)
@@ -34,9 +35,11 @@ app.register_blueprint(ssd_ncc_receive_bp)
 app.register_blueprint(image_thresholding_segmentation_bp)
 app.register_blueprint(face_detection_bp)
 app.register_blueprint(ping_bp)
-app.register_blueprint(start_cleanup_thread_bp)
+# app.register_blueprint(start_cleanup_thread_bp)
 app.register_blueprint(face_recognition_bp)
 
+
+start_cleanup_thread()
 
 if __name__ == "__main__":
     app.run()

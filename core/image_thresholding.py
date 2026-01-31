@@ -24,6 +24,7 @@ def global_threshold(img, sid):
     cv2.imwrite(img_path, img_thres)
     return img_path
 
+# Local Threshold
 def local_threshold(img, sid):
     img = cv2.imread(img, 0)
     windowsize_r = 4
@@ -63,6 +64,36 @@ def local_threshold(img, sid):
     img_path = f'./static/db/generated/{sid}/{generate()}.png'
     cv2.imwrite(img_path, img)
     return img_path
+
+# New Local Threshold
+def apply_local_threshold(img_path, sid):
+    img = cv2.imread(img_path, cv2.IMREAD_GRAYSCALE)
+
+    window_h, window_w = 4, 4
+    result = np.zeros_like(img)
+
+    for r in range(0, img.shape[0], window_h):
+        for c in range(0, img.shape[1], window_w):
+
+            window = img[r:r+window_h, c:c+window_w]
+
+            if window.size == 0:
+                continue
+
+            threshold = np.mean(window)
+
+            # Apply threshold
+            binary = np.where(window > threshold, 255, 0).astype(np.uint8)
+
+            # Write back
+            result[r:r+window_h, c:c+window_w] = binary
+
+    img_path = f'./static/db/generated/{sid}/{generate()}.png'
+    cv2.imwrite(img_path, result)
+
+    return img_path
+
+# 
 
 def otsu_thresholding(img):
     # Calculate histogram and normalize it

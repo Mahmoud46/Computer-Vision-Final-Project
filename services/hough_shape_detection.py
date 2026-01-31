@@ -133,7 +133,7 @@ def ellipse_detection(img_path, sid):
 
     mask = np.zeros(segmented_image.shape[:2], dtype=np.uint8)
     segmented_image = cv2.cvtColor(segmented_image, cv2.COLOR_BGR2GRAY)
-    segmented_image = adaptive_threshold(segmented_image)
+    segmented_image = adaptive_threshold(segmented_image).astype(np.uint8)
     contours, hierarchy = cv2.findContours(
         segmented_image, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
     approx = []

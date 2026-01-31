@@ -1,6 +1,7 @@
 import cv2
 from nanoid import generate
 import time
+import numpy as np
 from config.settings import MAX_IDLE_BETWEEN_TWO_PING_REQUESTS
 from utils.sessions_helpers import get_sessions, save_sessions_data
 
@@ -15,6 +16,19 @@ def save(img_path, sid):
     return upld_img_file
 
 
+def to_uint8(img):
+    """
+    Convert any image (float or int) to uint8 safely for saving.
+    """
+    if img.dtype == np.uint8:
+        return img
+
+    if img.max() <= 1.0:
+        # normalized image (0–1)
+        return (img * 255).clip(0, 255).astype(np.uint8)
+
+    # image already in 0–255 but float
+    return img.clip(0, 255).astype(np.uint8)
 
 # def cleanup_sessions_folders(sid):
 #     """

@@ -4,6 +4,7 @@ import cv2
 import imageio
 import seaborn as sns
 from nanoid import generate
+from utils.helpers import to_uint8
 
 
 def rgb_to_gray(image, mode):
@@ -79,6 +80,38 @@ def image_equalization(img, bin, sid):
     imageio.imwrite(img_path, img_new)
     return img_path
 
+def apply_image_equalization(img, bins, sid):
+    # Read grayscale image
+    image = cv2.imread(img, cv2.IMREAD_GRAYSCALE)
+
+    # Flatten image
+    flat = image.flatten()
+
+    # Histogram
+    hist = np.zeros(bins)
+    for pixel in flat:
+        hist[pixel] += 1
+
+    # Cumulative Distribution Function (CDF)
+    cdf = hist.cumsum()
+
+    # Normalize CDF to 0–255
+    cdf_min = cdf[cdf > 0][0]          # first non-zero value
+    num_pixels = flat.size
+
+    cdf_normalized = (cdf - cdf_min) / (num_pixels - cdf_min)
+    cdf_normalized = (cdf_normalized * 255).astype(np.uint8)
+
+    # Map pixels
+    img_new = cdf_normalized[flat]
+    img_new = img_new.reshape(image.shape)
+
+    # Save image
+    img_path = f'./static/db/generated/{sid}/{generate()}.png'
+    imageio.imwrite(img_path, img_new)
+
+    return img_path
+
 # equalization('./static/download/edit/bl.jpg',256)
 
 
@@ -92,5 +125,5 @@ def image_normalization(img, sid):
         norm = (ar - mn) * (1.0 / (mx-mn))
     img_path = f'./static/db/generated/{sid}/{generate()}.png'
     # cv2.imwrite(img_path,norm )
-    imageio.imwrite(img_path, norm)
+    imageio.imwrite(img_path, to_uint8(norm))
     return img_path

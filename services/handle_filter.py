@@ -3,8 +3,8 @@ from core.edge_detection import apply_canny_filter, apply_prewitt_filter, apply_
 from core.noise_reduction import apply_average_filter, apply_gaussian_filter, apply_median_filter
 from core.noise_generation import add_gaussian_noise, add_salt_pepper_noise, add_uniform_noise
 from utils.image_processing_helpers import convert_to_gray_scale
-from core.image_thresholding import local_threshold, global_threshold
-from core.image_enhancement import image_normalization, image_equalization
+from core.image_thresholding import apply_local_threshold, global_threshold
+from core.image_enhancement import image_normalization, apply_image_equalization
 from core.corner_detection import harris_corner
 
 def handle_filter(img_path, filter_name, sid):
@@ -36,11 +36,11 @@ def handle_filter(img_path, filter_name, sid):
     elif filter_name == "normalizer":
         new_path_img = image_normalization(img_path, sid)
     elif filter_name == "equalizer":
-        new_path_img = image_equalization(img_path, 256, sid)
+        new_path_img = apply_image_equalization(img_path, 256, sid)
     elif filter_name == "gloabal_thresholding":
         new_path_img = global_threshold(img_path, sid)
     elif filter_name == "local_thresholding":
-        new_path_img = local_threshold(img_path, sid)
+        new_path_img = apply_local_threshold(img_path, sid)
     elif filter_name == "convert_to_grayscale":
         new_path_img = convert_to_gray_scale(img_path, sid)
     elif filter_name == "harris_corner":

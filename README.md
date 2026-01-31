@@ -1,9 +1,9 @@
-<p align="center"><img src="static\imgs\sub.svg" width=200></p>
+<p align="center"><img src="./static/assets/pixel_logo_brandname.svg" width=200></p>
 
 <h1 align="center">Pixel Computer Vision Final Project</h1>
 
 <p align="center"><img src="pixel_video.gif"></p>
-<p align="center"><img src="static\imgs\pixel_poster.png" width=700></p>
+<p align="center"><img src="spixel_poster.png" width=700></p>
 
 ## Overview
 
