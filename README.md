@@ -1,4 +1,4 @@
-# Pixel – Computer Vision Tools and Analysis Platform
+# Pixel – Computer Vision Final Project
 
 Pixel is a comprehensive **computer vision application** developed as a **final project for the Computer Vision course** in the **Department of Systems and Biomedical Engineering, Faculty of Engineering, Cairo University**. The project provides an interactive environment for applying, visualizing, and analyzing a wide range of classical and advanced computer vision techniques.
 
