@@ -47,10 +47,7 @@ def active_contour(image_path, alpha, beta, iterations, w_line, w_edge, radius, 
 
     display(img, None, snake)
     
-    img_path = f'./static/db/generated/{sid}/{generate()}.png'
-
-    plt.savefig(img_path)
-    return img_path
+    return display(img, None, snake, sid)
 
 
 # active_contour(r'images\apple.png', alpha, beta,

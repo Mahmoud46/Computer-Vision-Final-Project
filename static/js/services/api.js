@@ -402,6 +402,11 @@ export function applyActiveContour(data) {
 	}).then((response) => {
 		if (response.status !== 200) {
 			console.log(`Response status was not 200: ${response.status}`);
+			window.alert("Something Went Wrong!");
+			HomeDom.loader.classList.remove("active");
+			document.querySelector(".hf-cont").classList.remove("handle");
+			document.querySelector(".snake-cont-det").classList.remove("hndl");
+			ShapeDetectionDom.startProBtn.style.pointerEvents = "auto";
 			return;
 		}
 		response.json().then((data) => {
@@ -431,6 +436,9 @@ export function applyHough(data) {
 	}).then((response) => {
 		if (response.status !== 200) {
 			console.log(`Response status was not 200: ${response.status}`);
+			window.alert("Something Went Wrong!");
+			ShapeDetectionDom.hfContSetWinf.classList.remove("handle");
+			HomeDom.loader.classList.remove("active");
 			return;
 		}
 		response.json().then((data) => {
@@ -463,6 +471,11 @@ export function sendData() {
 	}).then((response) => {
 		if (response.status !== 200) {
 			console.log(`Response status was not 200: ${response.status}`);
+			window.alert("Something went wrong!");
+			HomeDom.loader.classList.remove("active");
+			ImagesMatchingDom.operatingWindow.classList.remove("handle");
+			ImagesMatchingDom.processBtn.style = " pointer-events: auto";
+			ImagesMatchingDom.subWindowOpenBtn.style = " pointer-events: auto";
 			return;
 		}
 		response.json().then((data) => {

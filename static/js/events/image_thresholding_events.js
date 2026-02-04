@@ -17,7 +17,7 @@ export default function imageThresholdingEvents() {
 	});
 
 	ImageThresholdingDom.ts4UpldImgBtn.addEventListener("click", (_) =>
-		ImageThresholdingDom.ts4InpImage.click()
+		ImageThresholdingDom.ts4InpImage.click(),
 	);
 
 	ImageThresholdingDom.ts4InpImage.addEventListener("input", (_) => {
@@ -48,7 +48,7 @@ export default function imageThresholdingEvents() {
 				ImageThresholdingDom.ts4MainPanelElemnts.forEach((ele) =>
 					ele.classList.contains("active")
 						? ele.classList.remove("active")
-						: null
+						: null,
 				);
 				ImageThresholdingDom.ts4RmvImgBtn.classList.remove("active");
 				ImageThresholdingDom.ts4UpldImgBtn.classList.add("active");
@@ -63,7 +63,9 @@ export default function imageThresholdingEvents() {
 	ImageThresholdingDom.ts4MainPanelElemnts.forEach((ele) => {
 		ele.addEventListener("click", (_) => {
 			ImageThresholdingDom.ts4MainPanelElemnts.forEach((ele) =>
-				ele.classList.contains("active") ? ele.classList.remove("active") : null
+				ele.classList.contains("active")
+					? ele.classList.remove("active")
+					: null,
 			);
 			ele.classList.add("active");
 			ImageThresholdingStatus.ts4Data.thType = ele.getAttribute("value");
@@ -71,7 +73,7 @@ export default function imageThresholdingEvents() {
 			if (
 				ele.getAttribute("value") == "local_thresholding" ||
 				ele.getAttribute("value") == "region_growing" ||
-				ele.getAttribute("value") == "agglomerative_clustring" ||
+				ele.getAttribute("value") == "agglomerative_clustering" ||
 				ele.getAttribute("value") == "k_mean_segmentation"
 			) {
 				if (ele.getAttribute("value") == "local_thresholding") {
@@ -80,7 +82,7 @@ export default function imageThresholdingEvents() {
 				} else if (ele.getAttribute("value") == "region_growing") {
 					ImageThresholdingStatus.ts4Data.lclBlockSize = 50;
 					ImageThresholdingStatus.ts4Data.lclThresholdWeight = 60;
-				} else if (ele.getAttribute("value") == "agglomerative_clustring") {
+				} else if (ele.getAttribute("value") == "agglomerative_clustering") {
 					ImageThresholdingStatus.ts4Data.lclBlockSize = 4;
 					ImageThresholdingStatus.ts4Data.lclThresholdWeight = 20;
 				} else if (ele.getAttribute("value") == "k_mean_segmentation") {
@@ -97,8 +99,8 @@ export default function imageThresholdingEvents() {
 							if (e.type == "region_growing")
 								ImageThresholdingDom.ts4PanelMoreVar.innerHTML = e.body;
 							break;
-						case "agglomerative_clustring":
-							if (e.type == "agglomerative_clustring")
+						case "agglomerative_clustering":
+							if (e.type == "agglomerative_clustering")
 								ImageThresholdingDom.ts4PanelMoreVar.innerHTML = e.body;
 							break;
 						case "k_mean_segmentation":
@@ -142,7 +144,7 @@ export default function imageThresholdingEvents() {
 								ImageThresholdingDom.ts4PanelMoreVar.querySelectorAll("p"),
 							thrSpModesContVar =
 								ImageThresholdingDom.ts4PanelMoreVar.querySelector(
-									".thr-sp-mode-var"
+									".thr-sp-mode-var",
 								);
 						thrSpModes.forEach((el) => {
 							el.addEventListener("click", (_) => {
@@ -198,7 +200,7 @@ export default function imageThresholdingEvents() {
 			ImageThresholdingDom.ts4UplImage.src,
 			ImageThresholdingDom.ts4UplImage.src.split("/")[
 				ImageThresholdingDom.ts4UplImage.src.split("/").length - 1
-			]
-		)
+			],
+		),
 	);
 }

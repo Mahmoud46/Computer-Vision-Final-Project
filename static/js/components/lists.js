@@ -148,7 +148,7 @@ export const OptionsListDom = {
 `,
 		},
 		{
-			type: "agglomerative_clustring",
+			type: "agglomerative_clustering",
 			body: `
                     <h3><span class="material-symbols-outlined">inbox_customize</span><span>More Options</span></h3>
                     <div class="var-panel">

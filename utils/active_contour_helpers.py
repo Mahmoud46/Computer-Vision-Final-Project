@@ -1,9 +1,12 @@
+import matplotlib
+matplotlib.use("Agg")   # MUST be before pyplot import
 import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 import pylab as plb
 import matplotlib.cm as cm
 from PIL import Image
+from nanoid import generate
 
 def find_center(image_path):
     im = Image.open(image_path)
@@ -22,16 +25,27 @@ def find_center(image_path):
 
     return cx, cy
 
-def display(image, changedPoint=None, snake=None):
+def display(image, changedPoint=None, snake=None, sid=None):
+    fig, ax = plt.subplots(figsize=(6, 6))
+
     if snake is not None:
         for s in snake:
-            if (changedPoint is not None and (s[0] == changedPoint[0] and s[1] == changedPoint[1])):
-                plt.plot(s[0], s[1], '.r-', markersize=5.0)
-
+            if changedPoint is not None and s[0] == changedPoint[0] and s[1] == changedPoint[1]:
+                ax.plot(s[0], s[1], 'r.', markersize=5)
             else:
-                plb.plot(s[0], s[1], 'g.', markersize=5.0)
-    plt.imshow(image, cmap=cm.Greys_r)
-    # return image
+                ax.plot(s[0], s[1], 'g.', markersize=5)
+
+    ax.imshow(image, cmap=cm.Greys_r)
+    ax.axis("off")
+
+    img_path = ""
+    if sid:
+        img_path = f'./static/db/generated/{sid}/{generate()}.png'
+        fig.savefig(img_path, bbox_inches="tight", pad_inches=0)
+
+    plt.close(fig)
+    return img_path
+
 
 def imageGradient(gradient, snake):
     sum = 0
