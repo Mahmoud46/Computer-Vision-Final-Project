@@ -26,7 +26,7 @@ The project emphasizes correctness of implementation, modular design, and clarit
   - Average filter
   - Gaussian filter
   - Median filter
-- Edge detection algorithms:
+- Edge detection:
   - Sobel
   - Prewitt
   - Roberts
@@ -40,33 +40,46 @@ The project emphasizes correctness of implementation, modular design, and clarit
 
 ### Object Detection
 
-- Hough Transform for parametric shape detection:
-  - Line detection
-  - Circle detection
-  - Ellipse detection
+- Hough Transform for detecting:
+  - Lines
+  - Circles
+  - Ellipses
 - Active Contour Models (Snakes) for semi-supervised object segmentation
 
 ---
 
 ### Image Matching
 
-- Feature-based image matching techniques:
+- Feature-based matching techniques:
   - Scale-Invariant Feature Transform (SIFT)
   - Sum of Squared Differences (SSD)
   - Normalized Cross-Correlation (NCC)
 
 ---
 
-### Image Thresholding and Segmentation
+### Image Thresholding, Segmentation, and Clustering
 
-- Global thresholding techniques:
+This module provides multiple segmentation approaches, combining classical thresholding methods with unsupervised clustering techniques.
+
+#### Thresholding Techniques
+
+- Global thresholding:
   - Otsu’s thresholding
   - Optimal thresholding
-- Local thresholding
+- Local (adaptive) thresholding
 - Spectral thresholding
-- Region-based segmentation:
-  - Region growing
-  - Agglomerative clustering
+
+#### Color Space–Based Segmentation
+
+- RGB to LUV color space conversion
+- Color-based thresholding and segmentation using the LUV color representation to achieve better perceptual separation between regions and improved robustness to illumination changes
+
+#### Clustering-Based Segmentation
+
+- K-Means clustering for image segmentation
+- Mean Shift clustering for non-parametric, density-based image segmentation
+
+These techniques support both intensity-based and color-based image analysis workflows.
 
 ---
 

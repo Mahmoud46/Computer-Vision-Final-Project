@@ -2,7 +2,7 @@ from flask import Blueprint, request, make_response, jsonify
 from nanoid import generate
 import base64
 from services.image_thresholding import apply_otsu_thresholding, apply_optimal_thresholding, apply_spectral_thresholding, apply_mean_local_thresholding
-from services.image_segmentation import apply_region_growing, apply_agglomerative_clustering, convert_rgb_luv
+from services.image_segmentation import apply_region_growing, apply_agglomerative_clustering, convert_rgb_luv, apply_mean_shift, apply_kmeans_clustering
 
 image_thresholding_segmentation_bp = Blueprint("image_thresholding_segmentation_bp", __name__)
 
@@ -39,13 +39,14 @@ def apply_threshold():
     
         
     elif (req["thType"] == "k_mean_segmentation"):
-        # dwn_img_path = kms.apply_kmeans_segmentation(upld_img_file, int(
-        #     req["lclBlockSize"]), int(req["lclThresholdWeight"]))
+        print(req["lclBlockSize"])
+        print(req["lclThresholdWeight"])
+        dwn_img_path = apply_kmeans_clustering(upld_img_file, int(
+            req["lclBlockSize"]), int(req["lclThresholdWeight"]), req['sid'])
         print(req["thType"])
         
     elif (req["thType"] == "mean_shift_segmentation"):
-        # dwn_img_path = mns.apply_mean_shift(upld_img_file)
-        print(req["thType"])
+        dwn_img_path = apply_mean_shift(upld_img_file, req['sid'])
         
     elif (req["thType"] == "rgb_luv"):
         dwn_img_path = convert_rgb_luv(upld_img_file, req['sid'])
