@@ -129,7 +129,8 @@ This modular architecture allows the face recognition component to be maintained
 ## Live Demonstration
 
 The application is fully demonstrated at:  
-🔗 https://mahmoud46.github.io/pixel/
+🔗 https://mahmoud46.github.io/pixel/ \
+[▶ Watch Demo Video](pixel_video.mp4)
 
 ---
 
