@@ -130,7 +130,8 @@ This modular architecture allows the face recognition component to be maintained
 
 The application is fully demonstrated at:  
 🔗 https://mahmoud46.github.io/pixel/ \
-[▶ Watch Demo Video](pixel_video.mp4)
+[▶ Watch Demo Video](pixel_video.mp4)\
+[Computer Vision Final Project Report](https://drive.google.com/file/d/1M0KQKzUH3S5nmkLNpNCoF3H68J5lYySC/view?usp=sharing)
 
 ---
 
