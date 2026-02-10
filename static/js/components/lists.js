@@ -5,7 +5,7 @@ export const OptionsListDom = {
 			options: [
 				'<p value="uniform_noise"><span class="material-symbols-outlined">view_compact</span><span>Uniform Noise</span></p>',
 				'<p value="gaussian_noise"><span class="material-symbols-outlined">filter_hdr</span><span>Gaussian Noise</span></p>',
-				'<p value="salt_Papper_noise"><span class="material-symbols-outlined">grain</span><span>Salt & Papper Noise</span></p>',
+				'<p value="salt_Papper_noise"><span class="material-symbols-outlined">grain</span><span>Salt & Pepper Noise</span></p>',
 			],
 		},
 		{
